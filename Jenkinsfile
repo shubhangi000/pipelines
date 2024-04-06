@@ -11,6 +11,12 @@ stages         // it contains all the stages
         sh 'echo hi, this is prakash'  }    // sh represents to linux shell where you can the job
    }
 
+
+   stage('stage-11')
+   { steps                                  //how to perform stage-1
+     {  input 'please approve'  }    
+   }
+  
    stage('stage-2-code build')              //jenkins executes stages in sequence
    { steps
       { sh 'echo code_is_building' }
