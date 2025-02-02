@@ -2,21 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('number1') {
+        stage('git scm checkout') {
             steps {
-                echo 'Hello World'
+                git 'https://github.com/kumargaurav039/maven-project.git'
             }
-            }
-        stage('number2') {
+        }
+        stage('validate') {
             steps {
-                sleep 120
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
+                sh 'mvn validate'
+}
             }
-            }
-        stage('number3') {
+        }
+        stage('compile') {
             steps {
-                echo 'Hello Pune'
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
+                sh 'mvn compile'
+}
             }
         }
     }
-
 }
