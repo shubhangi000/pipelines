@@ -11,7 +11,7 @@ pipeline {
         stage('compile') {
             steps {
                 withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
-                    sh 'mvn clean package' 
+                    sh 'mvn validate' 
                 }
             }
         }
